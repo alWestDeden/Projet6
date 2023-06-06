@@ -183,6 +183,32 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }
 
+.filter {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 51px 182px;
+}
+
+.filter__button {
+	height: 37px;
+	display: inline-block;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background: none;
+	font-size: 16px;
+	font-family: 'Syne';
+	color: #1D6154;
+	margin-left: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.filter__button--active {
+	background-color: #1D6154;
+	border-radius: 60px;
+	color: white;
+}
