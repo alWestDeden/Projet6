@@ -1,3 +1,5 @@
+
+
 function login() {
     // remove elements of the page to build Log In
     const main = document.querySelector('main');
@@ -10,22 +12,22 @@ function login() {
     formLogin.id = "login";
     // generate the E-mail input
     const emailLabelLogin = document.createElement('label');
-    emailLabelLogin.innerText = "E-mail"
+    emailLabelLogin.innerText = "E-mail";
+    emailLabelLogin.setAttribute("for", "email");
     const emailLogin = document.createElement('input');
+    emailLogin.setAttribute("type", "email");
+    emailLogin.setAttribute("id", "email");
+    emailLogin.setAttribute("name", "email");
     emailLogin.setAttribute("required", "");
     // generate the Password input
     const passwordLabelLogin = document.createElement('label');
     passwordLabelLogin.innerText = "Mot de passe";
+    passwordLabelLogin.setAttribute("for", "password");
     const passwordLogin = document.createElement('input');
+    passwordLogin.setAttribute("type", "password");
+    passwordLogin.setAttribute("id", "password");
+    passwordLogin.setAttribute("name", "password");
     passwordLogin.setAttribute("required", "");
-    // generate E-mail and Password inputs attributes
-    const inputsLogin = ["email", "passwords"];
-    for (let i in inputsLogin) {
-        `${inputsLogin[i]}LabelLogin.setAttribute("for", "${inputsLogin[i]}")`;
-        `${inputsLogin[i]}Login.setAttribute("type", "${inputsLogin[i]}")`;
-        `${inputsLogin[i]}Login.setAttribute("id", "${inputsLogin[i]}")`;
-        `${inputsLogin[i]}Login.setAttribute("name", "${inputsLogin[i]}")`;
-    }
     // generate the Submit button
     const buttonLogin = document.createElement('input');
     buttonLogin.setAttribute("type", "submit");
