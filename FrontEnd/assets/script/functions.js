@@ -24,10 +24,11 @@ function buildFilters(categories) {
     let filterList = document.createElement('li');
     let filterButton = document.createElement('button');
     filterList.appendChild(filterButton);
-    filterButton.classList.add("filter__button", "filter__button--active");
+    filterButton.classList.add("button", "button--active");
     filterButton.setAttribute("id", "filter--0");
     filterButton.innerText = "Tous";
     filter.appendChild(filterList);
+
     // create the others filters
     for (let i in categories) {
         filterList = document.createElement('li');
@@ -35,21 +36,21 @@ function buildFilters(categories) {
         filterList.appendChild(filterButton);
         // get the filter's name from DataBase
         filterButton.innerText = categories[i].name;
-        filterButton.classList.add("filter__button");
+        filterButton.classList.add("button");
         filterButton.setAttribute("id", `filter--${Number(i) + 1}`);
         filter.appendChild(filterList);
     }
 }
 
 function activeFilter(works) {
-    let buttonState = document.getElementsByClassName("filter__button");
+    const buttonState = document.getElementsByClassName("button");
     for (let i in buttonState) {
         buttonState.item(i).addEventListener("click", (event) => {
             for (let active of buttonState) {
                 // remove active class from previous selected filter
-                active.classList.remove("filter__button--active");
+                active.classList.remove("button--active");
             }
-            buttonState.item(i).classList.add("filter__button--active");
+            buttonState.item(i).classList.add("button--active");
             // get filter button id to apply corresponding filter
             let buttonID = buttonState.item(i).id;
             switch (buttonID) {

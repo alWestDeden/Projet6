@@ -13,3 +13,8 @@ async function getJSONData() {
 }
 
 getJSONData();
+
+const loginLink = document.getElementById("login");
+loginLink.addEventListener('click', (event) => {
+    login();
+})
