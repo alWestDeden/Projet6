@@ -247,5 +247,12 @@ footer nav ul {
 }
 #login a {
 	text-decoration: underline;
-	margin-bottom: 355px;
+	margin-bottom: 30px;
+}
+
+#login h3 {
+	font-family: 'Work Sans' ;
+	font-size: 28px;
+	color: #B1663C;
+	margin-bottom: 297px;
 }

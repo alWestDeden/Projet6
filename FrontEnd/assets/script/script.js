@@ -10,11 +10,12 @@ async function getJSONData() {
     buildGallery(works);
     buildFilters(categories);
     activeFilter(works);
+
 }
 
 getJSONData();
 
 const loginLink = document.getElementById("login");
 loginLink.addEventListener('click', (event) => {
-    login();
+    buildLogin();
 })
