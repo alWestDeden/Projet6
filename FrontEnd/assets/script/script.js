@@ -15,7 +15,16 @@ async function getJSONData() {
 
 getJSONData();
 
+// listen to the Log In link
 const loginLink = document.getElementById("login");
 loginLink.addEventListener('click', (event) => {
-    buildLogin();
+    // check if there is a Token
+    let token = sessionStorage.getItem("token");
+    // no Token => Log In
+    if (token === undefined || token === null) {
+        buildLogin();
+        // Token => Log Out
+    } else {
+        logout();
+    }
 })

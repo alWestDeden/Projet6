@@ -106,7 +106,21 @@ async function checkLogin(user) {
         main.innerHTML = mainGalleryHTML;
         // rebuild the gallery
         getJSONData();
+        // replace login par logout
         // build the banner of Edition Mode
         buildEditionBanner();
     }
+}
+
+function logout() {
+    // remove the Edition Banner
+    const editionBanner = document.getElementById("edition-banner");
+    editionBanner.remove();
+    // Build the Gallery
+    getJSONData();
+    // change the logiin link name to login
+    const loginText = document.getElementById("login");
+    loginText.innerText = "login";
+    // remove the token from local
+    sessionStorage.removeItem("token");
 }
