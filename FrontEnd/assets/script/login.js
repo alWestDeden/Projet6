@@ -106,5 +106,7 @@ async function checkLogin(user) {
         main.innerHTML = mainGalleryHTML;
         // rebuild the gallery
         getJSONData();
+        // build the banner of Edition Mode
+        buildEditionBanner();
     }
 }
