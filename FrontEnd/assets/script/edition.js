@@ -1,10 +1,5 @@
-
 // build theBanner in Edition Mode
 function buildEditionBanner() {
-    //change the Log In link name to logout 
-    const loginText = document.getElementById("login");
-    loginText.innerText = "logout"
-    const body = document.querySelector('body');
     const editionBanner = document.createElement('div');
     editionBanner.classList.add("edition-banner");
     editionBanner.id = "edition-banner";
@@ -16,8 +11,8 @@ function buildEditionBanner() {
     buttonEdition.classList.add("button", "button-edition");
     buttonEdition.innerText = "publier les changements";
     let bannerItems = [iconEdition, textEdition, buttonEdition];
-    for (i in bannerItems) {
+    for (let i in bannerItems) {
         editionBanner.appendChild(bannerItems[i]);
     }
-    body.prepend(editionBanner);
+    document.querySelector('body').prepend(editionBanner);
 }

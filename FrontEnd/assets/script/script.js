@@ -16,8 +16,7 @@ async function getJSONData() {
 getJSONData();
 
 // listen to the Log In link
-const loginLink = document.getElementById("login");
-loginLink.addEventListener('click', (event) => {
+document.getElementById("login").addEventListener('click', (event) => {
     // check if there is a Token
     let token = sessionStorage.getItem("token");
     // no Token => Log In

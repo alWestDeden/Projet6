@@ -1,7 +1,6 @@
 function buildGallery(selectedWorks) {
     // delete the content of the gallery before importing from Server
-    const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = ""
+    document.querySelector(".gallery").textContent = ""
     // create the gallery (made of <figure> containers)
     for (let i in selectedWorks) {
         let figureWork = document.createElement('figure');
@@ -12,27 +11,25 @@ function buildGallery(selectedWorks) {
         let captionWork = document.createElement('figcaption');
         captionWork.innerText = selectedWorks[i].title;
         figureWork.append(imageWork, captionWork);
-        gallery.appendChild(figureWork);
+        document.querySelector(".gallery").appendChild(figureWork);
     }
 }
 
 function buildFilters(categories) {
     // create a new array from categories with a no Filter option
-    const noFilter = {"id": 0, "name": "Tous"};
-    const filterCategories = [noFilter].concat(categories);
+    const filterCategories = [{"id": 0, "name": "Tous"}].concat(categories);
     // delete the content of the filter (if any) before bulding it
-    const filter = document.querySelector(".filter");
-    filter.innerHTML = "";
+    document.querySelector(".filter").innerHTML = "";
     // create the filters
     for (let i in filterCategories) {
         filterList = document.createElement('li');
         filterButton = document.createElement('button');
-        filterList.appendChild(filterButton);
         // get the filter's name from DataBase
         filterButton.innerText = filterCategories[i].name;
         filterButton.classList.add("button");
-        filterButton.setAttribute("id", `filter--${Number(i)}`);
-        filter.appendChild(filterList);
+        filterButton.id = `filter--${Number(i)}`;
+        filterList.appendChild(filterButton);
+        document.querySelector(".filter").appendChild(filterList);
     }
 }
 
@@ -40,10 +37,11 @@ function activeFilter(works) {
     const buttonState = document.getElementsByClassName("button");
     for (let i in buttonState) {
         buttonState.item(i).addEventListener("click", (event) => {
+            // remove active class from previous selected filter
             for (let active of buttonState) {
-                // remove active class from previous selected filter
                 active.classList.remove("button--active");
             }
+            // add active class to the clicked button
             buttonState.item(i).classList.add("button--active");
             // get filter button id to apply corresponding filter
             let buttonID = buttonState.item(i).id;
