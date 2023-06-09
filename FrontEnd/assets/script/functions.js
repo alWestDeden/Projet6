@@ -19,7 +19,7 @@ function buildFilters(categories) {
     // create a new array from categories with a no Filter option
     const filterCategories = [{"id": 0, "name": "Tous"}].concat(categories);
     // delete the content of the filter (if any) before bulding it
-    document.querySelector(".filter").innerHTML = "";
+    document.querySelector(".filter").textContent = "";
     // create the filters
     for (let i in filterCategories) {
         filterList = document.createElement('li');
