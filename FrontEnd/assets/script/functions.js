@@ -17,27 +17,21 @@ function buildGallery(selectedWorks) {
 }
 
 function buildFilters(categories) {
-    // delete the content of the filter before bulding it
+    // create a new array from categories with a no Filter option
+    const noFilter = {"id": 0, "name": "Tous"};
+    const filterCategories = [noFilter].concat(categories);
+    // delete the content of the filter (if any) before bulding it
     const filter = document.querySelector(".filter");
-    filter.innerHTML = ""
-    // create the "show all works" filter
-    let filterList = document.createElement('li');
-    let filterButton = document.createElement('button');
-    filterList.appendChild(filterButton);
-    filterButton.classList.add("button", "button--active");
-    filterButton.setAttribute("id", "filter--0");
-    filterButton.innerText = "Tous";
-    filter.appendChild(filterList);
-
-    // create the others filters
-    for (let i in categories) {
+    filter.innerHTML = "";
+    // create the filters
+    for (let i in filterCategories) {
         filterList = document.createElement('li');
         filterButton = document.createElement('button');
         filterList.appendChild(filterButton);
         // get the filter's name from DataBase
-        filterButton.innerText = categories[i].name;
+        filterButton.innerText = filterCategories[i].name;
         filterButton.classList.add("button");
-        filterButton.setAttribute("id", `filter--${Number(i) + 1}`);
+        filterButton.setAttribute("id", `filter--${Number(i)}`);
         filter.appendChild(filterList);
     }
 }
