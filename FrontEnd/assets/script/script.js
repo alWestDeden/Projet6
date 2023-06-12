@@ -10,6 +10,7 @@ async function getJSONData() {
     buildGallery(works);
     buildFilters(categories);
     activeFilter(works);
+    if (document.getElementById("edition")) {buildPopUp(works, categories);}
 
 }
 
