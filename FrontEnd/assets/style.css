@@ -339,8 +339,9 @@ h3 {
 	margin-bottom: 46px;
 }
 
-.pop-up .gallery {
+.galleryPopUp {
 	height: 510px;
+	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	column-gap: 1%;
 	row-gap: 2%;
@@ -350,6 +351,21 @@ h3 {
 	margin-bottom: 3px;
 }
 
+.figure {
+	display: flex;
+	position: relative;
+}
+
+.figure img{
+	max-width: 100%;
+}
+
+.figure i {
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
 
 .pop-up--line {
 	width: 100%;

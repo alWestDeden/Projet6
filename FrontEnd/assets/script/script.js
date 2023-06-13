@@ -7,14 +7,21 @@ async function getJSONData() {
     const works = await worksDB.json();
     const categories = await categoriesDB.json();
   
-    buildGallery(works);
+    buildGallery(works, "main");
     buildFilters(categories);
     activeFilter(works);
-    if (document.getElementById("edition")) {buildPopUp(works, categories);}
-
+    
+    // check if in Edition Mode if so then allow build of Pop-Up
+    if (document.getElementById("edition")) {
+        document.getElementById("edition").addEventListener("click", (event) => {
+            event.preventDefault();
+            buildPopUp(works);
+        })
+    }
 }
 
 getJSONData();
+// getJSONData().then(works => { console.log(works) })
 
 // listen to the Log In link
 document.getElementById("login").addEventListener('click', (event) => {
@@ -27,4 +34,4 @@ document.getElementById("login").addEventListener('click', (event) => {
     } else {
         logout();
     }
-})
+});

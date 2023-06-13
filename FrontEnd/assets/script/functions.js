@@ -1,18 +1,32 @@
-function buildGallery(selectedWorks) {
+function buildGallery(works, type) {
     // delete the content of the gallery before importing from Server
-    document.querySelector(".gallery").textContent = ""
+    document.querySelector(".gallery").textContent = "";
     // create the gallery (made of <figure> containers)
-    for (let i in selectedWorks) {
+    for (let i in works) {
         let figureWork = document.createElement('figure');
         let imageWork = document.createElement('img');
-        imageWork.src = selectedWorks[i].imageUrl;
-        // use work's title as text alternative
-        imageWork.alt = selectedWorks[i].title;
+        imageWork.src = works[i].imageUrl;
         let captionWork = document.createElement('figcaption');
-        captionWork.innerText = selectedWorks[i].title;
-        figureWork.append(imageWork, captionWork);
-        document.querySelector(".gallery").appendChild(figureWork);
-    }
+        if (type === "popup") {
+            let trashAndImage = document.createElement('div');
+            trashAndImage.className = "figure";
+            trashAndImage.id = `figure--${works[i].id}`;
+            captionWork.innerText = "éditer";
+            figureWork.append(imageWork, captionWork);
+            let trashIcon = document.createElement('i');
+            trashIcon.className = "fa-solid fa-trash-can";
+            trashIcon.id = works[i].id;
+            trashAndImage.append(figureWork, trashIcon);
+            document.querySelector(".galleryPopUp").appendChild(trashAndImage);
+            if ((Number(i) + 1) === works.length) { deleteWork(works) }
+        } else {
+            // use work's title as text alternative
+            imageWork.alt = works[i].title;
+            captionWork.innerText = works[i].title;
+            figureWork.append(imageWork, captionWork);
+            document.querySelector(".gallery").appendChild(figureWork);
+        }
+    } 
 }
 
 function buildFilters(categories) {

@@ -102,10 +102,10 @@ async function checkLogin(user) {
 }
 
 function logout() {
-    // remove the Edition Banner
-    document.getElementById("edition-banner").remove();
     // Build the Gallery
     getJSONData();
+    // remove the Edition Banner
+    document.getElementById("edition-banner").remove();
     // change the logiin link name to login
     document.getElementById("login").innerText = "login";
     // remove the token from local
