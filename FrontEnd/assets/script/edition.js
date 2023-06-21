@@ -13,7 +13,7 @@ function buildEditionBanner() {
     editionBanner.id = "edition-banner";
     editionBanner.append(iconEdition, textEdition, buttonEdition);
     document.querySelector('body').prepend(editionBanner);
-    document.getElementById("edition").addEventListener("click", (event) => {
+    document.getElementById("edition").addEventListener('click', (event) => {
         event.preventDefault();
         // build the Modal
         getDataBaseWorks().then(works => buildDeleteModal(works));
@@ -25,7 +25,7 @@ function addModifyLinks() {
     for (let i = 0; i < hideModifyLinks.length; i++) {
         hideModifyLinks[i].classList.remove("hide-modify")
     }
-    document.getElementById("modify-link").addEventListener ('click', (event) => {
+    document.getElementById("modify-link").addEventListener('click', (event) => {
         event.preventDefault();
         // build the Modal
         getDataBaseWorks().then(works => buildDeleteModal(works));
