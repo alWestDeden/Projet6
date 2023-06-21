@@ -107,18 +107,6 @@ function logOut() {
     // hide the modify links
     removeModifyLinks();
 }
-// add the Modify links
-function addModifyLinks() {
-    const hideModifyLinks = document.getElementsByClassName("modify-link");
-    for (let i = 0; i < hideModifyLinks.length; i++) {
-        hideModifyLinks[i].classList.remove("hide-modify")
-        hideModifyLinks[i].addEventListener ('click', (event) => {
-            event.preventDefault();
-            // build the Modal
-            getDataBaseWorks().then(works => buildDeleteModal(works));
-        })
-    }
-}
 // remove the Modify links
 function removeModifyLinks() {
     const showModifyLinks = document.getElementsByClassName("modify-link");

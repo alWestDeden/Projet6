@@ -19,6 +19,18 @@ function buildEditionBanner() {
         getDataBaseWorks().then(works => buildDeleteModal(works));
     })
 }
+// add the Modify links
+function addModifyLinks() {
+    const hideModifyLinks = document.getElementsByClassName("modify-link");
+    for (let i = 0; i < hideModifyLinks.length; i++) {
+        hideModifyLinks[i].classList.remove("hide-modify")
+    }
+    document.getElementById("modify-link").addEventListener ('click', (event) => {
+        event.preventDefault();
+        // build the Modal
+        getDataBaseWorks().then(works => buildDeleteModal(works));
+    })
+}
 // build the Modal 1st page
 function buildDeleteModal(works) {
     const IconClosePopUp = document.createElement('i');
