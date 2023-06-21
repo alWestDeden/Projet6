@@ -1,15 +1,31 @@
-// build the Galleries (in main and in popup)
+// anonymous Log In's link  function
+(() => {
+    document.getElementById("login").addEventListener('click', (event) => {
+        let token = sessionStorage.getItem("token");
+        // no Token => Log In
+        if (token === undefined || token === null) { buildLogin();
+            // Token => Log Out first
+        } else { logOut() }
+    })
+})();
+// build the Galleries (in Main page and in Modal)
 function buildGallery(works, type) {
-    // delete the content of the main Gallery before importing from Server
-    if (type === "mainGallery") { document.querySelector('.gallery').textContent = '' };
-    // create the gallery (made of <figure> containers)
+    // delete the previous content first
+    switch (type) {
+        case "mainGallery":
+            document.querySelector('.gallery').textContent = ''
+            break;
+        case "popupGallery":
+            document.querySelector('.popup--gallery').textContent = ''
+            break;
+    }
+    // build the galleries
     for (let i in works) {
         let figureWork = document.createElement('figure');
         let imageWork = document.createElement('img');
-        // create the links to the images from DataBase
         imageWork.src = works[i].imageUrl;
         let captionWork = document.createElement('figcaption');
-        // popup Gallery part
+        // Modal gallery part
         if (type === "popupGallery") {
             // create a container to allow the deletion of work's caption and trash icon at the same time
             let trashAndImage = document.createElement('div');
@@ -20,15 +36,19 @@ function buildGallery(works, type) {
             figureWork.append(imageWork, captionWork);
             let trashIcon = document.createElement('i');
             trashIcon.className = "fa-solid fa-trash-can";
+            let selectedWork = document.createElement('i');
+            selectedWork.className = "fa-solid fa-arrows-up-down-left-right";
+            selectedWork.classList.add("hover-work");
             // identify each trash icons to corresponding work
             trashIcon.id = `trash--${works[i].id}`;
-            trashAndImage.append(figureWork, trashIcon);
+            trashAndImage.append(figureWork, selectedWork, trashIcon);
             document.querySelector(".popup--gallery").appendChild(trashAndImage);
-            // allow the deletion of work after all works have been loaded
-            if ((Number(i) + 1) === works.length) { deleteWork(works) }
-        // main Gallery part    
+            // allow the deletion of work only after all works have been loaded
+            if ((Number(i) + 1) === works.length) {
+                deleteWork(works);
+            }
+        // Main gallery part    
         } else {
-            // use work's title as text alternative
             imageWork.alt = works[i].title;
             captionWork.innerText = works[i].title;
             figureWork.append(imageWork, captionWork);
@@ -36,42 +56,40 @@ function buildGallery(works, type) {
         }
     } 
 }
-
-// build the filters
+// build the Filters
 function buildFilters(categories) {
     // create a new array from categories with a no Filter option
     const filterCategories = [{'id': 0, 'name': "Tous"}].concat(categories);
-    // delete the content of the filter (if any) before bulding it
+    // delete the content of the Filters (if any) before bulding it
     document.querySelector(".filter").textContent = '';
-    // create the filters
+    // create the Filters
     for (let i in filterCategories) {
         filterList = document.createElement('li');
         filterButton = document.createElement('button');
-        // get the filter's name from DataBase
         filterButton.innerText = filterCategories[i].name;
         filterButton.classList.add("button");
         filterButton.id = `filter--${Number(i)}`;
         filterList.appendChild(filterButton);
         document.querySelector(".filter").appendChild(filterList);
     }
-    // make the no filter button active on load
-    document.getElementById("filter--0").className = "button button--active"
+    // make the no Filter button active on load
+    document.getElementById("filter--0").className = "button button--active";
+    getDataBaseWorks().then(works => activeFilter(works));
 }
-
-// manage which filter is applying
+// manage which Filter is applyed
 function activeFilter(works) {
-    // listen to all filter buttons
-    const buttonState = document.getElementsByClassName("button");
-    for (let i in buttonState) {
-        buttonState.item(i).addEventListener('click', (event) => {
-            // remove active class from previous selected filter
+    // listen to all Filters buttons
+    const buttonState = document.querySelectorAll("button");
+    for (let b in buttonState) {
+        buttonState.item(b).addEventListener('click', () => {
+            // remove active class from previous selected Filter
             for (let active of buttonState) {
                 active.classList.remove("button--active");
             }
-            // add active class to the clicked button
-            buttonState.item(i).classList.add("button--active");
-            // get filter button id to apply corresponding filter
-            let buttonID = buttonState.item(i).id;
+            // add active class to the clicked Filter
+            buttonState.item(b).classList.add("button--active");
+            // get Filter Button's id to apply corresponding Filter
+            let buttonID = buttonState.item(b).id;
             switch (buttonID) {
                 case "filter--0":
                     buildGallery(works, "mainGallery");

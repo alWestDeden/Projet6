@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -61,7 +60,6 @@ header {
 section {
 	margin: 50px 0
 }
-
 h1{
 	display: flex;
 	flex-direction: column;
@@ -70,14 +68,11 @@ h1{
 	font-weight: 800;
 	color: #B1663C
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -88,13 +83,11 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
 li:hover {
 	color: #B1663C;
 }
@@ -110,20 +103,17 @@ li:hover {
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
 	flex: 1
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .gallery {
 	width: 100%;
@@ -132,7 +122,6 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
 
@@ -154,7 +143,6 @@ margin: auto;
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input {
 	height: 50px;
 	font-size: 1.2em;
@@ -168,7 +156,6 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -179,20 +166,26 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em;
 }
-
+li a {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
+#projects {
+	cursor: pointer;
+}
+/************** Filters (and Buttons) **************/
 .filter {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	margin: 51px 182px;
 }
-
 .button {
 	height: 37px;
 	display: inline-block;
@@ -207,13 +200,11 @@ footer nav ul {
 	padding-right: 20px;
 	cursor: pointer;
 }
-
 .button--active {
 	background-color: #1D6154;
-	border-radius: 60px;
 	color: white;
 }
-
+/************** Log In **************/
 #login {
 	width: 379px;
 	margin: auto;
@@ -227,7 +218,16 @@ footer nav ul {
 }
 #login h2{
 	margin-top: 150px;
-	margin-bottom: 37px;
+	margin-bottom: 10px;
+}
+h3 {
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+	color: #B1663C;
+}
+#login h3 {
+	height: 14px;
+	margin-bottom: 13px;
 }
 #login form {
 	text-align: left;
@@ -235,7 +235,6 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 }
-
 #login input {
 	height: 50px;
 	font-size: 1.2em;
@@ -249,19 +248,10 @@ footer nav ul {
 }
 #login a {
 	text-decoration: underline;
-	margin-bottom: 30px;
+	margin-bottom: 327px;
 }
-
-h3 {
-	font-family: 'Work Sans' ;
-	font-size: 28px;
-	color: #B1663C;
-}
-
-#login h3 {
-	margin-bottom: 297px;
-}
-
+/************** Edition Mode **************/
+/************** edition banner **************/
 .edition-banner {
 	display: flex;
 	flex-direction: row;
@@ -272,17 +262,14 @@ h3 {
 	background-color: black;
 	color: white;
 }
-
 .edition-banner i {
 	margin-right: 9px;
 }
-
 .edition-banner a {
 	font-family: 'Work Sans' ;
 	font-size: 16px;
 	margin-right: 21px;
 }
-
 .button-edition {
 	border: none;
 	background: white;
@@ -293,98 +280,235 @@ h3 {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
 #edition {
 	cursor: pointer;
 }
-
-.overlay {
+/************** modify link **************/
+.modify-link {
 	display: flex;
-	position: fixed;
+	flex-direction: row;
+	cursor: pointer;
+}
+.hide-modify {
+	display: none;
+}
+.modify-link i, p {
+	display: inline-block;
+}
+.modify-link p {
+	margin-left: 11px;
+}
+.intro-img .modify-link {
+	margin-top: 16px;
+	margin-left: 4.8vw;
+}
+.portfolio-title {
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
+}
+.portfolio-title h2 {
+	display: inline-block;
+}
+.portfolio-title .modify-link {
+	margin-left: 31px;
+}
+/************** modal **************/
+.overlay {
+	position: fixed;
 	top: 0;
+	bottom: 0;
 	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
 	background: rgba(0, 0, 0, .3);
 	cursor: pointer;
-	z-index: 99;
+	z-index: 1;
 }
-
-.popup {
+.modal {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: absolute;
 	width: 630px;
 	height: 731px;
 	background: #FFFFFF;
 	border-radius: 10px;
 	padding: 32px 100px;
+	z-index: 2;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
 }
-
-.popup i {
+/************** modal (delete work) **************/
+#cross-icon {
 	display: inline-block;
 	position: relative;
 	color: black;
 	right: -64px;
+	font-size: 12px;
 	align-self: flex-end;
 	cursor: pointer;
 }
-
-.popup h3 {
+.modal h3 {
 	font-size: 26px;
 	color: black;
 	margin-top: 10px;
 	margin-bottom: 16px;
 }
-
 h4 {
+	display: inline-block;
 	font-family: 'Work Sans' ;
+	height: 14px;
 	font-size: 14px;
 	color: #B1663C;
 	margin-bottom: 16px;
 }
-
 .popup--gallery {
 	height: 510px;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	column-gap: 1%;
-	row-gap: 2%;
+	grid: repeat(4, 1fr) / repeat(5, 1fr);
+	column-gap: 5px;
+	row-gap: 5px;
 	overflow: hidden;
     overflow-y: scroll;
 	box-sizing: content-box;
 	margin-bottom: 3px;
 }
-
 .figure {
 	display: flex;
 	position: relative;
 }
-
 .figure img{
 	max-width: 100%;
 }
-
 .figure i {
-	display: inline-block;
 	position: absolute;
 	top: 5px;
 	right: 5px;
 }
-
-.popup--line {
+.hover-work {
+	margin-right: 15px;
+	display: none;
+}
+.figure:hover > .hover-work {
+	display: block;
+}
+.line {
 	width: 100%;
 	height: 8px;
 	border-top: 1px solid #B3B3B3;
 	margin-bottom: 30px;
 }
-
-.popup a {
+.modal a {
 	font-family: 'Syne';
 	font-weight: 400;
 	font-size: 14px;
 	color: #D65353;
 	margin-top: 23px;
+}
+/************** modal (add work) **************/
+#left-arrow-icon {
+	display: inline-block;
+	position: relative;
+	color: black;
+	left: -64px;
+	align-self: flex-end;
+	cursor: pointer;
+}
+.popup--icons {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+#cross-icon, #left-arrow-icon {
+	font-size: 22px;
+}
+.popup--icons + h3  {
+	margin-top: 16px;
+	margin-bottom: 36px;
+}
+.add-work {
+	height: 670px;
+	width: 630px;
+	padding: 32px 105px;
+}
+#add-work:invalid input {
+	background: none;
+	color: #1D6154;
+}
+#add-file-label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #E8F1F6;
+	height: 169px;
+	width: 100%;
+	padding: 19px 0;
+	margin-bottom: 30px;
+}
+#add-file-label div > img {
+	width: auto;
+	height : auto;
+	max-height: 169px;
+	max-width: 100%;
+}
+#add-file-label i {
+	margin-top: 9px;
+	font-size: 58px;
+	color: #B9C5CC;
+	display: inline-block;
+}
+#add-file-label button {
+	margin-top: 21px;
+	display: inline-block;
+}
+#add-file-label p {
+	display: inline-block;
+	margin-top: 7px;
+}
+#add-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#add-file-button {
+	background-color: #CBD6DC;
+	border-radius: 50px;
+	padding: 10px 33px;
+}
+#add-title, #add-category {
+	font-family: 'Work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	color: #3D3D3D;
+}
+#add-title-input, #add-category-input {
+	width: 100%;
+	height: 51px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, .09);
+	margin-top: 10px;
+	margin-bottom: 21px;
+}
+.line-add {
+	margin-top: 39px;
+	margin-bottom: 32px;
+}
+.validation-button-container {
+	width: 100%;
+	height: 37px;
+	text-align: center;
+}
+#validation-button {
+	height: 37px;
+	margin: 0;
 }
