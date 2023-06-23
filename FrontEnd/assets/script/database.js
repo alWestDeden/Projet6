@@ -1,14 +1,18 @@
 // get Works from DataBase
 async function getDataBaseWorks() {
-    const worksDB = await fetch('http://localhost:5678/api/works');
-    const works = await worksDB.json();
-    return works;
+    try {
+        const worksDB = await fetch('http://localhost:5678/api/works');
+        const works = await worksDB.json();
+        return works;
+    } catch (error) { window.alert(error) }
 }
 // get Categories from DataBase
 async function getDataBaseCategories() {
-    const categoriesDB = await fetch('http://localhost:5678/api/categories');
-    const categories = await categoriesDB.json();
-    return categories;
+    try {
+        const categoriesDB = await fetch('http://localhost:5678/api/categories');
+        const categories = await categoriesDB.json();
+        return categories;
+    } catch (error) { window.alert(error) }
 }
 // anonymous function to build the Main page
 (() => {
