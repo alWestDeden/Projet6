@@ -16,15 +16,16 @@ function buildLogin() {
     const errorMessage = document.createElement('h3');
     errorMessage.id = "login--alert";
     const emailLabelLogin = document.createElement('label');
-    emailLabelLogin.for = 'email';
+    emailLabelLogin.htmlFor = 'email';
     emailLabelLogin.innerText = "E-mail";
     const emailLogin = document.createElement('input');
     emailLogin.type = 'email';
     emailLogin.name = 'email';
     emailLogin.id = 'email';
+    emailLogin.autocomplete = 'email';
     emailLogin.required = 'required';
     const passwordLabelLogin = document.createElement('label');
-    passwordLabelLogin.for = 'password';
+    passwordLabelLogin.htmlFor = 'password';
     passwordLabelLogin.innerText = "Mot de passe";
     const passwordLogin = document.createElement('input');
     passwordLogin.type = 'password';
@@ -82,7 +83,6 @@ async function checkLogin(user) {
         filters.textContent = '';
         // recall the HTML sections and rebuild
         document.querySelector('main').append(sectionIntroduction, sectionPortfolio, sectionContact)
-        getDataBaseWorks().then(works => buildGallery(works, "mainGallery"));
         // replace login par logout
         document.getElementById("login").innerText = "logout";
         // build the banner of Edition Mode

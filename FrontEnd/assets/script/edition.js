@@ -106,21 +106,19 @@ function buildAddModal(categories) {
     addFile.accept = '.jpg,.png';
     addFile.required = 'required';
     const addTitleLabel = document.createElement('label');
-    addTitleLabel.id = 'add-title';
     addTitleLabel.htmlFor = 'add-title';
     addTitleLabel.innerText = "Titre";
     const addTitleInput = document.createElement('input');
     addTitleInput.type = 'text';
-    addTitleInput.id = "add-title-input";
+    addTitleInput.id = "add-title";
     addTitleInput.name = 'add-title';
     addTitleInput.required = 'required';
     const addCategoryLabel = document.createElement('label');
-    addCategoryLabel.id = 'add-category';
     addCategoryLabel.htmlFor = 'add-category';
     addCategoryLabel.innerText = "Catégorie";
     const addCategoriesInput = document.createElement('input');
     addCategoriesInput.setAttribute('list', 'categories');
-    addCategoriesInput.id = "add-category-input";
+    addCategoriesInput.id = "add-category";
     addCategoriesInput.name = 'add-category';
     addCategoriesInput.required = 'required';
     const categoriesList = document.createElement('datalist');
@@ -226,9 +224,9 @@ function addWork(categories) {
     validationButton.addEventListener('submit', (event) => {
         event.preventDefault();
         // get entries from the Form
-        const workTitle = document.getElementById("add-title-input").value;
+        const workTitle = document.getElementById("add-title").value;
         const workImage = document.querySelector('input[type="file"]');
-        const workCategoryName = document.getElementById("add-category-input").value;
+        const workCategoryName = document.getElementById("add-category").value;
         const newWork = new FormData();
         for (let i in categories) {
             if (categories[i].name === workCategoryName) {

@@ -25,15 +25,6 @@ async function deleteWorkData(workID) {
                 'Authorization': `Bearer ${token}`,
             }
         })
-        .then((response) => {
-            if (response.ok) {
-                // print during 1.5s the deleted Project
-                getDataBaseWorks().then(works => {
-                    document.getElementById("popup--alert").innerText = `Suppression du projet: "${works[workID].title}"`;
-                    setTimeout(() => { document.getElementById("popup--alert").innerText = " " }, 1500);
-                })
-            }
-        })
     } catch (error) {
         document.getElementById("popup--alert").innerText = error;
         setTimeout(() => { document.getElementById("popup--alert").innerText = " " }, 1500);
