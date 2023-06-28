@@ -46,6 +46,16 @@ function buildLogin() {
 // get the values entered by the user
 function getLogin() {
     const formLogin = document.querySelector('form');
+    const emailLogin = document.querySelector("#email");
+    emailLogin.addEventListener('focusout', () => {
+        let email = document.getElementById("email").value;
+        let regex = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+");
+        let resultat = regex.test(email);
+        if (!resultat) { 
+            document.getElementById("login--alert").innerText = "Format de l'email invalide !";
+            setTimeout(() => { document.getElementById("login--alert").innerText = "" }, 1000);
+        }
+    })
     formLogin.addEventListener('submit', (event) => {
         event.preventDefault();
         // create an User object with the Input's values
